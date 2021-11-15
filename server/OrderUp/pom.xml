@@ -12,7 +12,7 @@
 	<artifactId>OrderUp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>OrderUp</name>
-	<description>Order Up website</description>
+	<description>OrderUp Server</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
