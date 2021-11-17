@@ -1,1 +1,40 @@
-<p>card works!</p>
+<div class="container">
+    <div class="row mt-5">
+        <div id="accordion" class="col-10 mx-auto" role="tablist">
+           <ul class="mx-auto p-0">
+               <li id="category-list" *ngFor="let category of Categorys; let i=index">
+                    <div class="category-card card mb-5">
+                        <div class="card-header {{'category'+i}}" role="tab" id="headingOne" (click)="blur(i)">
+                            <h5 class="mb-0 text-center">
+                                <a data-toggle="collapse" href="#{{category.name}}" aria-expanded="false" aria-controls="">
+                                {{category.name}}
+                                </a>
+                            </h5>
+                        </div>
+                    
+                        <div id="{{category.name}}" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="card-body category-card-body">
+                                    <ul class="mx-auto p-0">
+                                        <li id="category-list" class="pb-3" *ngFor="let food of category.products">
+                                            <div class="d-flex justify-content-around">
+                                                <span class="food">{{food.name}} -- {{food.price}}</span>
+                                                <span class="d-flex justify-content-around">
+                                                    <div class="buttonCat">-</div>
+                                                    <div class="buttonCat">+</div>
+                                                </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+               </li>
+           </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <button class="buttonCategory col-10 mx-auto mb-4 fixed-bottom btn" (click)="reviewOrder()">Volver al pedido</button>
+    </div>
+
+</div>
