@@ -1,0 +1,15 @@
+io\orderup\models\OrderList.class
+io\orderup\OrderUpApplication.class
+io\orderup\models\User.class
+io\orderup\models\Order.class
+io\orderup\models\Category.class
+io\orderup\repositories\RoleRepository.class
+io\orderup\repositories\UserRepository.class
+io\orderup\models\Role.class
+io\orderup\repositories\OrderRepository.class
+io\orderup\repositories\CategoryRepository.class
+io\orderup\models\Product.class
+io\orderup\repositories\ProductRepository.class
+io\orderup\repositories\TableRepository.class
+io\orderup\models\ProductList.class
+io\orderup\models\Table.class
