@@ -1,4 +1,4 @@
-package io.OrderUp;
+package io.orderup;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
