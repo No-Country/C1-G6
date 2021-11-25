@@ -10,14 +10,18 @@ import java.util.Set;
 @javax.persistence.Table(name = "orders")
 public class Order implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne(targetEntity = Product.class)
-    private Set<Product> products;
+    @ManyToOne()
+    @JoinColumn(name = "products")
+    private Product products;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @ManyToOne()
+    @JoinColumn(name = "table_id")
     private Table table;
 
     private String comments;

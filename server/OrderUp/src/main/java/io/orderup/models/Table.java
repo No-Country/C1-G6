@@ -16,11 +16,8 @@ public class Table implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
-    private Integer tableNumber;
 
-    @JoinColumn(name = "order")
-    @OneToOne(fetch = FetchType.LAZY)
-    private Order order;
+    private Integer tableNumber;
 
 
 }
