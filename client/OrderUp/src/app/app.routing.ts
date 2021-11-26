@@ -10,6 +10,7 @@ import { TableComponent } from "./components/table/table.component";
 import { TablesComponent } from "./components/tables/tables.component";
 
 const appRoutes: Routes = [
+    {   path: '', component: CardComponent},
     {   path: 'Card', component: CardComponent },
     {   path: 'Login', component: LoginComponent },
     {   path: 'Order', component: OrderComponent},
