@@ -14,17 +14,18 @@
                     
                         <div id="{{category.name}}" class="collapse" role="tabpanel" aria-labelledby="headingOne">
                             <div class="card-body category-card-body">
-                                    <ul class="mx-auto p-0">
-                                        <li id="category-list" class="pb-3" *ngFor="let food of category.products">
-                                            <div class="d-flex justify-content-around">
+                                <ng-container id="category-list" class="pb-3" *ngFor="let food of Products">
+                                        <div class="mb-2" *ngIf="food.category.name == category.name">
+                                            <div class="d-flex justify-content-around" >
                                                 <span class="food">{{food.name}} -- {{food.price}}</span>
                                                 <span class="d-flex justify-content-around">
                                                     <div class="buttonCat">-</div>
                                                     <div class="buttonCat">+</div>
                                                 </span>
                                             </div>
-                                        </li>
-                                    </ul>
+                                            <span class="descriptionFood">({{food.description}})</span>
+                                        </div>
+                                </ng-container>
                             </div>
                         </div>
                     </div>

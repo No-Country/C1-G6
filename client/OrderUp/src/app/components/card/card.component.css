@@ -52,6 +52,10 @@ a {
   cursor: pointer;
 }
 
+.container #category-list .descriptionFood {
+  color: gray;
+}
+
 .container .category-card-body {
   background-color: #303030 !important;
   color: white !important;
