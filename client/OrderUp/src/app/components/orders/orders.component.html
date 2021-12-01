@@ -1,0 +1,12 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-10 mx-auto d-flex justify-content-between mb-3 p-2 pl-4 pr-4 orderBox" *ngFor="let order of orders">
+            <span>
+                <b>Mesa:</b> {{order.table.tableNumber}} -- <b>Mozo:</b> {{order.user.name}}
+            </span>
+            <span>
+                Total: $ 
+            </span>
+        </div>
+    </div>
+</div>

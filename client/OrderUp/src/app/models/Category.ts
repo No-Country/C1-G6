@@ -1,9 +1,7 @@
-import { Product } from "./Product";
-
 export class Category {
     constructor(
-        public _id: string,
+        public _id: number,
         public name: string,
-        public products: Product[] 
+        public image: string
     ){}
 }
