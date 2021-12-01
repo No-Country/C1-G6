@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tables.component.css']
 })
 export class TablesComponent implements OnInit {
-
+  public tables = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   constructor() { }
 
   ngOnInit(): void {

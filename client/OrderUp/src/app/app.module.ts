@@ -15,6 +15,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AdministradorComponent } from './components/administrador/administrador.component';
 import { PersonalComponent } from './components/personal/personal.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { PersonalComponent } from './components/personal/personal.component';
     FormsModule,
     routing
   ],
+
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
