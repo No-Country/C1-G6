@@ -10,6 +10,7 @@ import { TableComponent } from "./components/table/table.component";
 import { TablesComponent } from "./components/tables/tables.component";
 import { OrdersComponent } from "./components/orders/orders.component";
 
+
 const appRoutes: Routes = [
     {   path: '', component: CardComponent},
     {   path: 'Card', component: CardComponent },
@@ -18,7 +19,6 @@ const appRoutes: Routes = [
     {   path: 'Orders', component: OrdersComponent},
     {   path: 'Register', component: RegisterComponent},
     {   path: 'Stock', component: StockComponent},
-    {   path: 'Table', component: TableComponent},
     {   path: 'Tables', component: TablesComponent}
 ];
 

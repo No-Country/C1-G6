@@ -8,7 +8,6 @@ export class Order {
         public productlist: string,
         public table: Table,
         public user: User,
-        public price: number
     ){}
 
 }

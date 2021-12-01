@@ -4,6 +4,7 @@ import { ProductService } from 'src/app/services/produtc.service';
 import * as $ from 'jquery';
 import { Product } from 'src/app/models/Product';
 import { Category } from 'src/app/models/Category';
+import { Order } from 'src/app/models/Order';
 
 @Component({
   selector: 'card',
@@ -12,9 +13,10 @@ import { Category } from 'src/app/models/Category';
   providers: [ProductService]
 })
 export class CardComponent implements OnInit {
- 
+  public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1},productlist:"",user:{id:0,name:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}}
   public Categorys: Category[] = []
   public Products: Product[] = []
+  public ProductsOrder: Product[] = []
   constructor(
     private _router: Router,
     private _ProductService: ProductService,
@@ -24,6 +26,7 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
     this.getCategorys();
+    this.addProdouct(2);
   }
 
   reviewOrder(){
@@ -69,4 +72,41 @@ export class CardComponent implements OnInit {
       }
     )
   }
+
+  getOrder() {
+    this._ProductService.getOrder(2).subscribe(
+      response => {
+        this.order = response;
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  addProdouct(id:any){
+    this._ProductService.getOrder(2).subscribe(
+      response => {
+        this.order = response;
+        this.order.productlist += "/"+id;
+        this.updateProduct(this.order);
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  updateProduct(order: Order){
+    this._ProductService.PutOrder(order,2).subscribe(
+      response => {
+        console.log("hola")
+      },
+      err => {
+        console.log(err);
+      }
+    )
+  }
+
+  
 }

@@ -17,13 +17,13 @@
                                 <ng-container id="category-list" class="pb-3" *ngFor="let food of Products">
                                         <div class="mb-2" *ngIf="food.category.name == category.name">
                                             <div class="d-flex justify-content-around" >
-                                                <span class="food">{{food.name}} -- {{food.price}}</span>
+                                                <span class="food">{{food.name}} -- ${{food.price}} <br> <span class="descriptionFood">({{food.description}})</span></span>
                                                 <span class="d-flex justify-content-around">
                                                     <div class="buttonCat">-</div>
                                                     <div class="buttonCat">+</div>
                                                 </span>
                                             </div>
-                                            <span class="descriptionFood">({{food.description}})</span>
+                                            
                                         </div>
                                 </ng-container>
                             </div>

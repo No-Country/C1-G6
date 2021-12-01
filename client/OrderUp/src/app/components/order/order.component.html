@@ -4,77 +4,21 @@
             <img src="../../../assets/img/logo.png" height="50px" class="mx-auto mt-3 mb-3">
             <span class="aux"></span>
             <div class="card-body pl-0 pr-0 text-center">
-                <h4 class="mx-auto">{{numberTable}}</h4>
-                Mozo: <b>Nombre Mozo</b>
+                <h4 class="mx-auto">Mesa: {{order.table.tableNumber}}</h4>
+                Mozo: <b>{{order.user.name}}</b>
             </div>  
             <span class="aux"></span>
             <div class="card-body pl-0 pr-0">
-                <span class="food">
-                    <h4 class="col-6">Milanesa completa</h4>
-                    <h4 class="col-6 price">$1000</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Coca-Cola 1.5l</h4>
-                    <h4 class="col-6 price">$500</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Papas fritas</h4>
-                    <h4 class="col-6 price">$1260</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Chocolina</h4>
-                    <h4 class="col-6 price">$750</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Agua 1l</h4>
-                    <h4 class="col-6 price">$700</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Milanesa completa</h4>
-                    <h4 class="col-6 price">$1000</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Coca-Cola 1.5l</h4>
-                    <h4 class="col-6 price">$500</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Papas fritas</h4>
-                    <h4 class="col-6 price">$1260</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Chocolina</h4>
-                    <h4 class="col-6 price">$750</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Agua 1l</h4>
-                    <h4 class="col-6 price">$700</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Milanesa completa</h4>
-                    <h4 class="col-6 price">$1000</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Coca-Cola 1.5l</h4>
-                    <h4 class="col-6 price">$500</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Papas fritas</h4>
-                    <h4 class="col-6 price">$1260</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Chocolina</h4>
-                    <h4 class="col-6 price">$750</h4>
-                </span>
-                <span class="food">
-                    <h4 class="col-6">Agua 1l</h4>
-                    <h4 class="col-6 price">$700</h4>
+                <span class="food" *ngFor="let product of products">
+                    <h4 class="col-6">{{product.name}}</h4>
+                    <h4 class="col-6 price">${{product.price}}</h4>
                 </span>
             </div>
             <span class="aux"></span>
             <div class="card-body pl-0 pr-0">
                 <span class="food">
                     <h4 class="col-6">Total</h4>
-                    <h4 class="col-6 price">$4210</h4>
+                    <h4 class="col-6 price">${{total}}</h4>
                 </span>
             </div>
         </div>

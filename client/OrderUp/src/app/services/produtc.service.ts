@@ -25,4 +25,11 @@ export class ProductService {
     getOrders():Observable<any> {
         return this._http.get(this.url+"/orders");
     }
+    getOrder(id:any):Observable<any> {
+        return this._http.get(this.url+"/orders/"+id);
+    }
+    PutOrder(product:any,id:any):Observable<any> {
+        var params = JSON.stringify(product);
+        return this._http.put(this.url+"/orders/"+id,params);
+    }
 }
