@@ -12,7 +12,9 @@ import { TableComponent } from './components/table/table.component';
 import { TablesComponent } from './components/tables/tables.component';
 import { OrderComponent } from './components/order/order.component';
 import { RegisterComponent } from './components/register/register.component';
-import { OrdersComponent } from './components/orders/orders.component';
+import { AdministradorComponent } from './components/administrador/administrador.component';
+import { PersonalComponent } from './components/personal/personal.component';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { OrdersComponent } from './components/orders/orders.component';
     TablesComponent,
     OrderComponent,
     RegisterComponent,
-    OrdersComponent
+    AdministradorComponent,
+    PersonalComponent
   ],
   imports: [
     BrowserModule,
