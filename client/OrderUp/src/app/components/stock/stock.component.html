@@ -1,1 +1,6 @@
-<p>stock works!</p>
+<div class="contenedor">
+    <div class="contProducts" *ngFor= "let product of products">
+        <label class="productos otraClase">{{product.name}}</label>        
+        <input type="checkbox" class= "checkbox">
+    </div>
+</div>
