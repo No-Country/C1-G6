@@ -32,6 +32,7 @@ import { OrdersComponent } from './components/orders/orders.component';
     FormsModule,
     routing
   ],
+
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })

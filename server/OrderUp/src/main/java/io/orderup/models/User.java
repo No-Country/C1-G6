@@ -21,7 +21,7 @@ public class User implements Serializable {
     private String name;
     private String surname;
     private String password;
-    private Integer phone;
+    private long phone;
     private String email;
 
     @ManyToOne
