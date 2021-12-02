@@ -1,4 +1,4 @@
-.loginBtn{
+.Btn{
     width: 102%!important;
     height: 40px;
     border: none;
@@ -13,7 +13,7 @@
     
         
 }
-.loginBtn:hover{
+.Btn:hover{
     transform: translate(-1%, 5%);
     box-shadow: 0 0 10px #ff416d65;
 
