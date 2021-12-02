@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { StockComponent } from './components/stock/stock.component';
 import { LoginComponent } from './components/login/login.component';
 import { CardComponent } from './components/card/card.component';
-import { TableComponent } from './components/table/table.component';
 import { TablesComponent } from './components/tables/tables.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderComponent } from './components/order/order.component';
@@ -23,7 +22,6 @@ import { PersonalComponent } from './components/personal/personal.component';
     StockComponent,
     LoginComponent,
     CardComponent,
-    TableComponent,
     TablesComponent,
     OrderComponent,
     OrdersComponent,
