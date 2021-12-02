@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from 'src/app/models/Order';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/produtc.service';
@@ -11,24 +11,35 @@ import { ProductService } from 'src/app/services/produtc.service';
 })
 export class OrderComponent implements OnInit {
   public numberTable:string = "Mesa X"
-  public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1},productlist:"",user:{id:0,name:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}}
+  public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1,id_order: -1},productlist:"",user:{id:0,name:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}}
   public products: Product[] = [];
   public total: number = 0;
   constructor(
     private _router: Router,
-    private _ProductService: ProductService
-  ) { }
+    private _ProductService: ProductService,
+    public _route: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
-    this.getOrder();
+    this._route.params.subscribe(params => {
+      let id = params.id;
+      this.getOrder(id);
+  });
   }
 
   addFood(){
-    this._router.navigate(['Card']);
+    this._route.params.subscribe(params => {
+      let id = params.id;
+      this._router.navigate(['Card',id]);
+    });
   }
 
-  getOrder(){
-    this._ProductService.getOrder(2).subscribe(
+  goTables(){
+    this._router.navigate(['Tables']);
+  }
+
+  getOrder(id:any){
+    this._ProductService.getOrder(id).subscribe(
       response => {
         this.order = response;
         this.getProducts();

@@ -16,13 +16,14 @@ export class OrdersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getOrder()
+    this.getOrders()
   }
 
-  getOrder() {
+  getOrders() {
     this._ProductService.getOrders().subscribe(
       response => {
         this.orders = response;
+        console.log(response)
       },
       err => {
         console.log("-----------------------")
