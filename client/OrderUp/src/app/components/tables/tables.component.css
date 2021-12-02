@@ -16,3 +16,11 @@
 h3 {
     text-align: center;
 }
+.close{
+    right: 18px;
+    bottom: 18px;
+    position: absolute;
+    width: 35px;
+    height: 40px;
+    border-radius: 0.3rem;
+}
