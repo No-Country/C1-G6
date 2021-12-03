@@ -19,8 +19,8 @@
                                             <div class="d-flex justify-content-around" >
                                                 <span class="food">{{food.name}} -- ${{food.price}} <br> <span class="descriptionFood">({{food.description}})</span></span>
                                                 <span class="d-flex justify-content-around">
-                                                    <div class="buttonCat">-</div>
-                                                    <div class="buttonCat">+</div>
+                                                    <div class="buttonCat" (click)="RemoveProduct(food.id)">-</div>
+                                                    <div class="buttonCat" (click)="addProdouct(food.id)">+</div>
                                                 </span>
                                             </div>
                                             

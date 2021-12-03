@@ -17,6 +17,7 @@ const appRoutes: Routes = [
     {   path: 'Card/:id', component: CardComponent },
     {   path: 'Login', component: LoginComponent },
     {   path: 'Order/:id', component: OrderComponent},
+    {   path: 'Order', component: OrderComponent},
     {   path: 'Orders', component: OrdersComponent},
     {   path: 'Register', component: RegisterComponent},
     {   path: 'Stock', component: StockComponent},

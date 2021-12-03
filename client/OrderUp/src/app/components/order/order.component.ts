@@ -10,7 +10,6 @@ import { ProductService } from 'src/app/services/produtc.service';
   providers: [ProductService]
 })
 export class OrderComponent implements OnInit {
-  public numberTable:string = "Mesa X"
   public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1,id_order: -1},productlist:"",user:{id:0,name:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}}
   public products: Product[] = [];
   public total: number = 0;
@@ -21,10 +20,13 @@ export class OrderComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    sessionStorage.setItem('order',"");
     this._route.params.subscribe(params => {
       let id = params.id;
-      this.getOrder(id);
-  });
+      if( id != undefined){
+        this.getOrder(id);
+      }
+    });
   }
 
   addFood(){
@@ -45,23 +47,32 @@ export class OrderComponent implements OnInit {
         this.getProducts();
       },
       err => {
+        console.log("-----------------------");
         console.log(err);
+        console.log("-----------------------");
       }
     )
   }
 
   getProducts(){
-    var aux = this.order.productlist.split('/');
-    for (let i = 0; i < aux.length; i++) {
-      this._ProductService.getProduct(parseInt(aux[i])).subscribe(
-        response => {
-          this.products.push(response);
-          this.total += parseInt(response.price);
-        },
-        err => {
-          console.log(err);
+    if(this.order.productlist){
+      var aux = this.order.productlist.split('/');
+        for (let i = 0; i < aux.length; i++) {
+          if(aux[i] != ""){
+            this._ProductService.getProduct(parseInt(aux[i])).subscribe(
+              response => {
+                this.products.push(response);
+                this.total += parseInt(response.price);
+              },
+              err => {
+                console.log("-----------------------");
+                console.log(err);
+                console.log("-----------------------");
+              }
+            )     
+          } 
         }
-      )      
+      }
     }
-  }
+    
 }

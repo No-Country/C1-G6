@@ -29,14 +29,17 @@ export class CardComponent implements OnInit {
     this.getCategorys();
     this._route.params.subscribe(params => {
       let id = params.id;
-      this.getOrder(id);
+      if(id != undefined){
+        this.getOrder(id);
+      }
     });
   }
 
   reviewOrder(){
+    this.updateProduct(this.order);
     this._route.params.subscribe(params => {
       let id = params.id;
-     this._router.navigate(['Order',id]);
+      this._router.navigate(['Order',id]);
     });
   }
   blur(index:number){
@@ -83,22 +86,20 @@ export class CardComponent implements OnInit {
     this._ProductService.getOrder(id).subscribe(
       response => {
         this.order = response;
-        if(this.order.productlist == ""){
-          sessionStorage.setItem('order',"");
-        }else {
-          sessionStorage.setItem('order',this.order.productlist);
-        }
+        sessionStorage.setItem('order',this.order.productlist);
       },
       err => {
+        console.log("-----------------------");
         console.log(err);
+        console.log("-----------------------");
       }
     )
   }
 
-  addProdouct(id_product:any){
+  addProdouct(id_product:number){
     var aux = sessionStorage.getItem('order');
-    if (aux){
-      aux += "/"+id_product;
+    if (aux || aux == ""){
+      aux += id_product+"/";
       sessionStorage.setItem('order',aux);
     }
   }
@@ -108,38 +109,36 @@ export class CardComponent implements OnInit {
     if (aux){
       var array = aux.split('/');
       aux = "";
-      for (let i = 0; i < array.length; i++) {
-        if(parseInt(array[i]) == id_product){
-          array.splice(i,1);
-        }
+      var i = array.indexOf(id_product.toString());
+      if( i !== -1){
+        array.splice(i,1);
       }
       for (let i = 0; i < array.length; i++) {
-        aux += array[i]+'/'
+        if( array[i] != ""){
+          aux += array[i]+'/'
+        }
       }
       sessionStorage.setItem('order',aux);
     }
   }
 
-  
-
   updateProduct(order: Order){
     var formData = new FormData();
-      var table_id = order.table.id.toString()
-      var user_id = order.user.id.toString()
-      var productlist = sessionStorage.getItem('order')
-      if (productlist) {
-        formData.append("productlist", productlist);
-      }else {
-        formData.append("productlist", order.productlist);
-      }
-      formData.append("table_id", table_id);
-      formData.append("comments", order.comments);
-      formData.append("user_id", user_id);   
-      
-      var request = new XMLHttpRequest();
-      request.open("PUT", Global.url+"/orders/"+order.id);
-      request.send(formData);
+    var table = order.table.id.toString()
+    var user = order.user.id.toString()
+    var productlist = sessionStorage.getItem('order')
+    if (productlist) {
+      formData.append("productlist", productlist);
+    }else {
+      formData.append("productlist", order.productlist);
+    }
+    formData.append("table", table);
+    formData.append("comments", order.comments);
+    formData.append("user", user);   
+    
+    var request = new XMLHttpRequest();
+    request.open("PUT", Global.url+"/orders/"+order.id);
+    request.send(formData);
   }
 
-  
 }

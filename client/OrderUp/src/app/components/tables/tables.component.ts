@@ -26,6 +26,7 @@ export class TablesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    sessionStorage.setItem('order',"");
     this.getOrders();
   }
 
