@@ -7,14 +7,39 @@
     padding: 10px;
     background: linear-gradient(#ff416c, #ff4b2b);
     border: 2px solid black;
+    border-radius: 10px;
 }
+
 .btn-primary{
     margin-bottom: 15px; 
     border-style: none;
     background: linear-gradient(#ff416c, #ff4b2b)!important;
     border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 h3 {
     text-align: center;
+
 }
+.Btn{
+    width: 60%!important;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 0px 20%;
+    transform: translate(-1%);
+    cursor: pointer;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    transition: all .4s;
+    padding: 5px 20px;
+
+
+}
+
+.Btn:hover{
+    transform: translate(-1%, 5%);
+    box-shadow: 0 0 10px #ff416d65;
+
+} 
