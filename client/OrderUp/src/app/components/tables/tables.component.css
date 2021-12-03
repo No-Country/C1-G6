@@ -23,6 +23,15 @@ h3 {
     text-align: center;
 
 }
+.close{
+    right: 18px;
+    bottom: 20px;
+    position: absolute;
+    width: 35px;
+    height: 40px;
+    border-radius: 0.3rem;
+}
+
 .Btn{
     width: 60%!important;
     height: 40px;
@@ -37,7 +46,6 @@ h3 {
 
 
 }
-
 .Btn:hover{
     transform: translate(-1%, 5%);
     box-shadow: 0 0 10px #ff416d65;

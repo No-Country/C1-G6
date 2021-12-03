@@ -37,10 +37,13 @@ export class CardComponent implements OnInit {
 
   reviewOrder(){
     this.updateProduct(this.order);
-    this._route.params.subscribe(params => {
-      let id = params.id;
-      this._router.navigate(['Order',id]);
-    });
+    setTimeout(() => {
+      this._route.params.subscribe(params => {
+        let id = params.id;
+        this._router.navigate(['Order',id]);
+      });
+    },1500)
+   
   }
   blur(index:number){
     var clas = '.category'+index;
@@ -130,7 +133,7 @@ export class CardComponent implements OnInit {
     if (productlist) {
       formData.append("productlist", productlist);
     }else {
-      formData.append("productlist", order.productlist);
+      formData.append("productlist", "");
     }
     formData.append("table", table);
     formData.append("comments", order.comments);

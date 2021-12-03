@@ -23,7 +23,6 @@ export class OrdersComponent implements OnInit {
     this._ProductService.getOrders().subscribe(
       response => {
         this.orders = response;
-        console.log(response)
       },
       err => {
         console.log("-----------------------")

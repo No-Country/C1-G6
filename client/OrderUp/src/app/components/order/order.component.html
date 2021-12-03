@@ -26,7 +26,10 @@
     </div>
 
     <div class="row">
-        <button class="buttonCategory col-3 mx-auto mb-2 btn" (click)="addFood()">Agregar</button>
+        <button class="buttonCategory col-3 mx-auto mb-2 btn" (click)="addFood()" *ngIf="true">Agregar</button>
+    </div>
+    <div class="row">
+        <button class="buttonCategory col-3 mx-auto mb-2 btn" (click)="goTables()" *ngIf="false">Cerrar</button>
     </div>
     <div class="row">
         <button class="buttonCategory col-3 mx-auto mb-2 btn" (click)="goTables()">Mesas</button>
