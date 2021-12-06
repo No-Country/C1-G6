@@ -7,7 +7,6 @@ import io.orderup.models.AuthenticationRequest;
 import io.orderup.models.User;
 import io.orderup.repositories.UserRepository;
 import io.orderup.services.AuthService;
-import io.orderup.services.OUUserDetailsService;
 import io.orderup.services.UserService;
 import io.orderup.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +57,7 @@ public class AuthController {
             user = xmuserDetailsService.loadUserByUsername(jwtUtil.extractEmail(jwt));
         } else {
             return "there is no logged user";
+        }*/
         }*/
         try {
             jwt = authorizationHeader.substring(7);
@@ -119,7 +119,7 @@ public class AuthController {
         while (randomNum == 39 | randomNum == 40 | randomNum == 41 | randomNum == 42 | randomNum == 0){
             randomNum = ThreadLocalRandom.current().nextInt(1, 45);
         }
-        User cuser = userService.getUser(randomNum);
+        User user = userService.getUser(randomNum);
         user.setPassword(user.getPassword() + banana.getUsername());
         return authService.register(user);
     }
@@ -128,5 +128,4 @@ public class AuthController {
     public void changeData(@PathVariable String id, @RequestBody User user) {
         authService.changeData(id, user);
     }
-}
 }

@@ -42,10 +42,11 @@ public class AuthService {
     }
 
     public void changeData(String id, User user){
+
         userRepository.save(user);
     }
 
-    public Object (HttpServletRequest httpServletRequest){
+    public String Object (HttpServletRequest httpServletRequest){
         Principal principal = httpServletRequest.getUserPrincipal();
         return principal.getName();
     }

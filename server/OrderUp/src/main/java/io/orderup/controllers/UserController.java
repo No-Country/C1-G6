@@ -1,10 +1,13 @@
 package io.orderup.controllers;
 
+import io.orderup.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
+import java.util.Optional;
 
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -16,12 +19,12 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/users")
-    public List<Users> getAllUsers(){
+    public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
 
     @RequestMapping("/users/{id}")
-    public Users getUser(@PathVariable long id){
+    public Optional<io.orderup.models.User> getUser(@PathVariable long id){
         return userService.getUser(id);
     }
 
@@ -30,23 +33,23 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    @PostMapping("/guardar")
-    public <exception> String guardar(RedirectAttributes redirectAt,
-                                      @RequestParam String name, @RequestParam String surname,
-                                      @RequestParam String password, @RequestParam String phone, @RequestParam String email) {
+    @PostMapping("/saveUser")
+    public <exception> String saveUser (RedirectAttributes redirectAt,
+                                        @RequestParam String name, @RequestParam String surname,
+                                        @RequestParam String password, @RequestParam Long phone, @RequestParam String email) {
         try {
-            amigoService.save(name, surname, password, phone, email);
+            userService.save(name, surname, password, phone, email);
             return "redirect:/";
         } catch (Error e) {
             redirectAt.addFlashAttribute("error", e.getMessage());
-            return "redirect:/user/registroUser";
+            return "redirect:/user/registerUser";
         }
     }
 
-    @GetMapping("/eliminar")
-    public String eliminar(@RequestParam String id) {
-        userService.eliminarUser(id);
-        return "redirect:/user/listaUser";
+    @GetMapping("/removeUser")
+    public String removeUser(@RequestParam Long id) {
+        userService.removeUser(id);
+        return "redirect:/user/listUser";
     }
 }
 

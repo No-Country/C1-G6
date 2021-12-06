@@ -1,7 +1,7 @@
 package io.orderup.services;
 
-
-import io.OrderUp.models.Table;
+import io.orderup.models.Table;
+import io.orderup.repositories.TableRepository;
 
 import javax.transaction.Transactional;
 
@@ -14,7 +14,7 @@ public class TableService {
     }
 
     @Transactional
-	public Table buscarPorId(String id)  {
-        return TableRepository.getById(id);
+	public Table searchById(Long id)  {
+     TableRepository.getById(id);
 	} 
 }

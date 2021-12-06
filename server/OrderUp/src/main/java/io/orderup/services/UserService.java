@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -22,7 +23,7 @@ public class UserService {
         return users;
     }
 
-    public User getUser(long id) {
+    public Optional<io.orderup.models.User> getUser(long id) {
         try {
             var user = userRepository.findById(id);
             return user;
@@ -32,13 +33,19 @@ public class UserService {
     }
 
     @Transactional
-    public User findById(String id) {
+    public Optional<io.orderup.models.User> findById(String id) {
+
         return userRepository.findById(id);
     }
 
+    public void deleteUser(long id) {
+    }
 
-    public void save(User user) {
+    public void save(String name, String surname, String password, Long phone, String email) {
         userRepository.save(user);
     }
 
+    public void removeUser(Long id) {
+        userRepository.deleteForId(id);
+    }
 }
