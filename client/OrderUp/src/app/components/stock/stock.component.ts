@@ -1,45 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/Product';
+import { ProductService } from 'src/app/services/produtc.service';
 
 @Component({
   selector: 'stock',
   templateUrl: './stock.component.html',
-  styleUrls: ['./stock.component.css']
+  styleUrls: ['./stock.component.css'],
+  providers: [ProductService]
 })
 export class StockComponent implements OnInit {
+  public products: Product[] = [];
 
-  constructor() { }
-  public products = [
-    {
-      name: "milanesa",
-      stock: true
-    },
-    {
-      name: "milanesa completa",
-      stock: true
-    },
-    {
-      name: "hamburguesa",
-      stock: true
-    },
-    {
-      name: "coca-cola",
-      stock: true
-    },
-    {
-      name: "agua",
-      stock: true
-    },
-    {
-      name: "papas fritas",
-      stock: true
-    },
-    {
-      name: "chocolina",
-      stock: true
-    }
-  ];
+  constructor(
+    private _ProductService: ProductService
+  ) { }
   
   ngOnInit(): void {
+    this._ProductService.getProducts().subscribe(
+      response => {
+        this.products = response;
+      },
+      err => {
+        console.log("-----------------------");
+        console.log(err);
+        console.log("-----------------------");
+      }
+    )
   }
 
 }

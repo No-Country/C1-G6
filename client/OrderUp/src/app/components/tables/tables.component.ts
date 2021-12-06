@@ -51,26 +51,57 @@ export class TablesComponent implements OnInit {
     )
   }
 
-  goOrder(id_order:number, table_id:number) {
+  goOrder(id_order:number, tableNumber:number) {
     if(id_order == -1){
       var formData = new FormData();
 
-      var table = table_id.toString();
+      var table = tableNumber.toString();
 
       formData.append("productlist", "");
       formData.append("table", table);
-      formData.append("comments", "");
+      formData.append("comments", "Sin comentarios");
       formData.append("user", '2');
       
       var request = new XMLHttpRequest();
       request.open("POST", Global.url+"/orders");
       request.send(formData);
+      setTimeout(() => {
+        this._ProductService.getOrders().subscribe(
+          response => {
+            var auxOrder = response;
+            for (let i = 0; i < auxOrder.length; i++) {
+              if(auxOrder[i].table.tableNumber == tableNumber){
+                this._router.navigate(['/Order',auxOrder[i].id]);
+              }
+            }
 
+          },
+          err => {
+            console.log("-----------------------");
+            console.log(err);
+            console.log("-----------------------");
+          }
+        )
+      },1000)
     }
     else {
       this._router.navigate(['/Order',id_order]);
     }
   }
 
+  deleteTable(id_table: number){
+    alert('Mesa '+id_table+' eliminada')
+  }
+
+  addTable(){
+    alert('Mesa agregada')
+    // Pedir todas las mesas
+    // buscar la mesa con el numero mas alto
+    // sumarle uno
+    // crear nueva mesa con x numero
+
+    // volver a pedir todas las mesas
+    // y asignarlas al arreglo
+  }
 
 }

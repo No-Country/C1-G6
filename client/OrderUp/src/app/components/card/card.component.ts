@@ -14,10 +14,11 @@ import { Global } from 'src/app/services/global';
   providers: [ProductService]
 })
 export class CardComponent implements OnInit {
-  public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1, id_order: -1},productlist:"",user:{id:0,name:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}}
+  public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1, id_order: -1},productlist:"",user:{id:0,name:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}, total:0}
   public Categorys: Category[] = []
   public Products: Product[] = []
   public ProductsOrder: Product[] = []
+  public idExist: boolean = false;
   constructor(
     private _router: Router,
     private _ProductService: ProductService,
@@ -31,6 +32,7 @@ export class CardComponent implements OnInit {
       let id = params.id;
       if(id != undefined){
         this.getOrder(id);
+        this.idExist = true;
       }
     });
   }
@@ -104,6 +106,12 @@ export class CardComponent implements OnInit {
     if (aux || aux == ""){
       aux += id_product+"/";
       sessionStorage.setItem('order',aux);
+      for (let i = 0; i < this.Products.length; i++) {
+        if( this.Products[i].id == id_product){
+          this.order.total += parseInt(this.Products[i].price.toString())
+          break;
+        }
+      }
     }
   }
 
@@ -122,23 +130,33 @@ export class CardComponent implements OnInit {
         }
       }
       sessionStorage.setItem('order',aux);
+      for (let i = 0; i < this.Products.length; i++) {
+        if( this.Products[i].id == id_product){
+          this.order.total -= parseInt(this.Products[i].price.toString())
+          break;
+        }
+      }
     }
   }
 
   updateProduct(order: Order){
     var formData = new FormData();
-    var table = order.table.id.toString()
-    var user = order.user.id.toString()
+    var table = order.table.id.toString();
+    var user = order.user.id.toString();
+    var total = order.total.toString();
     var productlist = sessionStorage.getItem('order')
+
     if (productlist) {
       formData.append("productlist", productlist);
     }else {
       formData.append("productlist", "");
     }
+    
     formData.append("table", table);
     formData.append("comments", order.comments);
     formData.append("user", user);   
-    
+    formData.append("total", total)
+
     var request = new XMLHttpRequest();
     request.open("PUT", Global.url+"/orders/"+order.id);
     request.send(formData);

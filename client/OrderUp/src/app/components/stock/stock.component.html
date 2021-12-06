@@ -1,6 +1,8 @@
 <div class="contenedor">
-    <div class="contProducts" *ngFor= "let product of products">
-        <label class="productos otraClase">{{product.name}}</label>        
-        <input type="checkbox" class= "checkbox">
+    <div class="row">
+        <div class="contProducts col-8 mx-auto" *ngFor= "let product of products">
+            <label class="productos otraClase">{{product.name}}</label>        
+            <input type="checkbox" class= "checkbox">
+        </div>
     </div>
 </div>
