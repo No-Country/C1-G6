@@ -1,14 +1,12 @@
 package io.orderup.controllers;
 
+import io.orderup.models.User;
 import io.orderup.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
-
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -24,8 +22,8 @@ public class UserController {
     }
 
     @RequestMapping("/users/{id}")
-    public Optional<io.orderup.models.User> getUser(@PathVariable long id){
-        return userService.getUser(id);
+    public io.orderup.models.User getUser(@PathVariable long id){
+        return (io.orderup.models.User) userService.getUser(id);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/users/{id}")

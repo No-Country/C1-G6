@@ -1,11 +1,15 @@
 package io.orderup.services;
 
-import io.orderup.models.Table;
 import io.orderup.repositories.TableRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
 
 public class TableService {
+
+    @Autowired
+    private TableRepository tableRepository;
+    private io.orderup.models.Table table;
 
     public static void save(String tableNumber) {
     }
@@ -14,7 +18,7 @@ public class TableService {
     }
 
     @Transactional
-	public Table searchById(Long id)  {
-     TableRepository.getById(id);
-	} 
+	public void searchById(Long id)  {
+     tableRepository.getById(id);
+	}
 }
