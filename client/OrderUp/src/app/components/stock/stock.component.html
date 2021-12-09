@@ -1,8 +1,11 @@
 <div class="contenedor">
     <div class="row">
-        <div class="contProducts col-8 mx-auto" *ngFor= "let product of products">
+        <span class="col-5 mx-auto mt-3">
+            Se actualizo el stock de: <b>{{nameStock}}</b>
+        </span>
+        <div class="contProducts col-8 mx-auto pl-3 pr-3" *ngFor= "let product of products">
             <label class="productos otraClase">{{product.name}}</label>        
-            <input type="checkbox" class= "checkbox">
+            <input type="checkbox" class="checkbox" #productStock [(ngModel)]="product.stock" (click)="updateStock(product)">
         </div>
     </div>
 </div>

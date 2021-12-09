@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import * as $ from 'jquery';
+import { authService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,24 @@ import * as $ from 'jquery';
 })
 export class AppComponent {
   title = 'OrderUp';
+  public access: boolean = false;
 
-  constructor(){}
+  constructor(
+    private _authService: authService,
+  ){}
+  
+  ngOnInit(): void {
+    
+  }
+
+  ngDoCheck() {
+    this.access = this._authService.loggedIn()
+  }
+
   noShow(){
+  }
+
+  logOut(){
+    this._authService.logOut()
   }
 }

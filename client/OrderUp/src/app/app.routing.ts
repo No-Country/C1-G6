@@ -10,12 +10,13 @@ import { TablesComponent } from "./components/tables/tables.component";
 import { AdministradorComponent } from "./components/administrador/administrador.component";
 import { PersonalComponent } from "./components/personal/personal.component";
 import { OrdersComponent } from "./components/orders/orders.component";
+import { AuthGuard } from "./auth.guard";
 
 const appRoutes: Routes = [
     {   path: '', component: CardComponent},
     {   path: 'Card', component: CardComponent },
-    {   path: 'Card/:id', component: CardComponent },
-    {   path: 'Login', component: LoginComponent },
+    {   path: 'Card/:id', component: CardComponent},
+    {   path: 'Login', component: LoginComponent},
     {   path: 'Order/:id', component: OrderComponent},
     {   path: 'Order', component: OrderComponent},
     {   path: 'Orders', component: OrdersComponent},

@@ -1,39 +1,47 @@
 <div class="container mt-4">
-    <p class="heading">Registro</p>
-    <div class="box">
-        <p>Usuario</p>
-        <div>
-            <input type="text" name="" id="" placeholder="Usuario">
+    <form id="userForm" #userForm="ngForm" (ngSubmit)="registerUser(userForm)">
+        <p class="heading">Registro</p>
+        <div class="box">
+            <p>Usuario</p>
+            <div>
+                <input name="username" type="text" #UserUserame [(ngModel)]="newUser.surname" >
+            </div>
         </div>
-    </div>
-    <div class="box">
-        <p>Edad</p>
-        <div>
-            <input type="number" name="" id="" placeholder="Edad">
+        <div class="box">
+            <p>Nombre</p>
+            <div>
+                <input name="name" type="text" #UserName [(ngModel)]="newUser.name">
+            </div>
         </div>
-    </div>
-    <div class="box">
-        <p>Puesto</p>
-            <select name="" id="" placeholder="Puesto">
-                <option value="Salon">Mozo</option>
-                <option value="Cocina">Cocinero</option>
-                <option value="Caja">Cajero</option>
-                <option value="Administracion">Administrador</option>
+        <div class="box">
+            <p>Puesto</p>
+            <select name="puesto" #UserPuesto [(ngModel)]="newUser.role_id.id">
+                <option value="0">-------</option>
+                <option value="1">Mozo</option>
+                <option value="4">Cocinero</option>
+                <option value="3">Cajero</option>
+                <option value="2">Administrador</option>
             </select>
-    </div>
-    
-    <div class="box">
-        <p>Telefono</p>
-        <div>
-            <input type="number" name="" id="" placeholder="Telefono">
         </div>
-    </div>
-    <div class="box">
-        <p>Contraseña</p>
-        <div>
-            <input type="password" name="" id="" placeholder="Contraseña">
+        <div class="box">
+            <p>Email</p>
+            <div>
+                <input name="email" type="email" #UserEmail [(ngModel)]="newUser.email">
+            </div>
         </div>
-    </div>
-    <button class="loginBtn btn-danger">Registrar</button>
+        <div class="box">
+            <p>Telefono</p>
+            <div>
+                <input name="phone" type="number" #UserPhone [(ngModel)]="newUser.phone">
+            </div>
+        </div>
+        <div class="box">
+            <p>Contraseña</p>
+            <div>
+                <input name="password" type="password" #UserPassword [(ngModel)]="newUser.password">
+            </div>
+        </div>
+        <button class="loginBtn btn-danger">Registrar</button>
+    </form>
 </div>
 
