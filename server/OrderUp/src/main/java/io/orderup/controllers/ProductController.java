@@ -42,7 +42,7 @@ public class ProductController {
         if (product.getPrice() == null){
             product.setPrice(oldProduct.getPrice());
         }
-        if (product.getStock() == 0){
+        if (product.getStock() == null){
             product.setStock(oldProduct.getStock());
         }
         if (product.getDescription() == null){
