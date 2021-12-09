@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 @RestController
@@ -56,7 +55,7 @@ public class AuthController {
         final String authorizationHeader = httpServletRequest.getHeader(HttpHeaders.AUTHORIZATION);
         /*if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
-            user = userDetailsService.loadUserByUsername(jwtUtil.extractEmail(jwt));
+            user = xmuserDetailsService.loadUserByUsername(jwtUtil.extractEmail(jwt));
         } else {
             return "there is no logged user";
         }*/
@@ -120,8 +119,8 @@ public class AuthController {
         while (randomNum == 39 | randomNum == 40 | randomNum == 41 | randomNum == 42 | randomNum == 0){
             randomNum = ThreadLocalRandom.current().nextInt(1, 45);
         }
-        userService.getUser ( randomNum );
-        user.setPassword(user.getPassword() + user.getUsername ());
+        User CUser = userService.getUser(randomNum);
+        user.setPassword(user.getPassword() + CUser.getUsername());
         return authService.register(user);
     }
 
@@ -130,3 +129,4 @@ public class AuthController {
         authService.changeData(id, user);
     }
 }
+
