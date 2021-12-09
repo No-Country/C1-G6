@@ -1,24 +1,25 @@
 package io.orderup.services;
 
+import io.orderup.models.Table;
 import io.orderup.repositories.TableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-
+@Service
 public class TableService {
 
     @Autowired
     private TableRepository tableRepository;
-    private io.orderup.models.Table table;
 
-    public static void save(String tableNumber) {
+    public void save(Table table) {
+        tableRepository.save(table);
     }
 
-    public static void deleteTable(String id) {
+    public void deleteTable(long id) {
+        tableRepository.deleteById(id);
     }
 
-    @Transactional
-	public void searchById(Long id)  {
-     tableRepository.getById(id);
-	}
+    public Table searchById(long id)  {
+        return tableRepository.getById(id);
+    }
 }

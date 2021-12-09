@@ -6,31 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Optional;
+import java.util.List;
 
 @Service
-public abstract class UserService {
+public class UserService {
 
     @Autowired
-    private final UserRepository userRepository;
-    private final io.orderup.models.User user;
-    private long id;
+    private UserRepository userRepository;
 
-    protected UserService(UserRepository userRepository, io.orderup.models.User user) {
-        this.userRepository = userRepository;
-        this.user = user;
-    }
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<>();
-        userRepository.findAll().
-                forEach(users::add);
+        userRepository.findAll()
+                .forEach(users::add);
         return users;
-
     }
 
-    public Object getUser(long id) {
+    public User getUser(long id) {
         try {
             var user = userRepository.findById(id);
             return user;
@@ -40,22 +32,16 @@ public abstract class UserService {
     }
 
     @Transactional
-    public Optional<io.orderup.models.User> findById(String id) {
-
+    public User findById(long id) {
         return userRepository.findById(id);
     }
-
-    public void deleteUser(long id) {
-        this.id = id;
-    }
-    
-    public void removeUser(Long id) {
-        userRepository.deleteById(String.valueOf(id));
-    }
-
-    public void save(String name, String surname, String password, Long phone, String email) {
+    public void save(User user) {
         userRepository.save(user);
     }
 
+    @Transactional
+    public void deleteById(long id){
+        userRepository.deleteById(id);
+    }
 
 }

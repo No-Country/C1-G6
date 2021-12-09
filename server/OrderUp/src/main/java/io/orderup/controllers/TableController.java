@@ -1,29 +1,27 @@
 package io.orderup.controllers;
 
+import io.orderup.models.Table;
 import io.orderup.services.TableService;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:4200")
+@RestController
+@RequestMapping("/api")
 public class TableController {
 
+	@Autowired
+	private TableService tableService;
+
     @PostMapping("/saveTable")
-	public String saveTable(RedirectAttributes redirectAt, @RequestParam String tableNumber){
-		try{
-			TableService.save(tableNumber);
+	public String saveTable(@RequestParam Table table){
+			tableService.save(table);
 			return "redirect:/";
-		}catch(Error e) {
-			redirectAt.addFlashAttribute("error", e.getMessage());
-			return "redirect:/user/registerTable";
 		}
-	}
 	
 	@GetMapping("/delete")
-	public String delete(@RequestParam String id) {
-		TableService.deleteTable(id);
+	public String delete(@RequestParam long id) {
+		tableService.deleteTable(id);
 		return "redirect:/table/listTable";
 	}
     

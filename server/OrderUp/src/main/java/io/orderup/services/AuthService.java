@@ -42,7 +42,6 @@ public class AuthService {
     }
 
     public void changeData(String id, User user){
-
         userRepository.save(user);
     }
 
