@@ -26,7 +26,7 @@ public class Product extends DateAudit {
 
         private String description;
 
-        private int stock;
+        private Integer stock;
 
         @ManyToOne()
         @JoinColumn(name = "category_id")
