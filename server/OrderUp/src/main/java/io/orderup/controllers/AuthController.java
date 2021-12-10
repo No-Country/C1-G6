@@ -23,8 +23,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class AuthController {
@@ -76,7 +78,7 @@ public class AuthController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/authenticate")
-    public String createAuthenticationToken(HttpServletRequest httpServletRequest, 
+    public String createAuthenticationToken(HttpServletRequest httpServletRequest,
             @RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         String json = "";
         try {
@@ -115,12 +117,21 @@ public class AuthController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")
     public String register(@RequestBody User user) {
-        int randomNum = 0;
+        /*int randomNum = ThreadLocalRandom.current().nextInt(1, 2);;
         while (randomNum == 39 | randomNum == 40 | randomNum == 41 | randomNum == 42 | randomNum == 0){
             randomNum = ThreadLocalRandom.current().nextInt(1, 45);
         }
-        User CUser = userService.getUser(randomNum);
-        user.setPassword(user.getPassword() + CUser.getUsername());
+        User CUser = userService.getUser(randomNum);*/
+        String randomString;
+        Random random = new Random();
+        char[] word = new char[ThreadLocalRandom.current().nextInt(4, 8)];
+        for(int j = 0; j < word.length; j++)
+            {
+                word[j] = (char)('a' + random.nextInt(26));
+            }
+        randomString = new String(word);
+        System.out.println(randomString);
+        user.setPassword(user.getPassword() + randomString);
         return authService.register(user);
     }
 
