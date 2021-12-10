@@ -14,7 +14,7 @@ import { Global } from 'src/app/services/global';
   providers: [ProductService]
 })
 export class CardComponent implements OnInit {
-  public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1, id_order: -1},productlist:"",user:{id:0,name:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}, total:0}
+  public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1, id_order: -1},productlist:"",user:{id:0,username:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}, total:0}
   public Categorys: Category[] = []
   public Products: Product[] = []
   public ProductsOrder: Product[] = []

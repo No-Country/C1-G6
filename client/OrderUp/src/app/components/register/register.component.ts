@@ -9,17 +9,17 @@ import { Global } from 'src/app/services/global';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  public newUser: User = {id: 0,name: "",surname: "",password: "",email:"",phone:0,role_id:{id: 0, name:""}}
+  public newUser: User = {id: 0,username: "",surname: "",password: "",email:"",phone:0,role_id:{id: 0, name:""}}
   constructor() { }
 
   ngOnInit(): void {
   }
 
   registerUser(form:any) {
-    if ( this.newUser.name != "" && this.newUser.surname !="" && this.newUser.password !="" && this.newUser.email !="" && this.newUser.phone != 0 && this.newUser.role_id.id != 0) {
+    if ( this.newUser.username != "" && this.newUser.surname !="" && this.newUser.password !="" && this.newUser.email !="" && this.newUser.phone != 0 && this.newUser.role_id.id != 0) {
       var formData = new FormData();
 
-      formData.append("name", this.newUser.name)
+      formData.append("name", this.newUser.username)
       formData.append("surname", this.newUser.surname);
       formData.append("password", this.newUser.password);
       formData.append("email", this.newUser.email);   

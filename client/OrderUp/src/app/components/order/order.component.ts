@@ -11,7 +11,7 @@ import { ProductService } from 'src/app/services/produtc.service';
   providers: [ProductService]
 })
 export class OrderComponent implements OnInit {
-  public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1,id_order: -1},productlist:"",user:{id:0,name:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}, total: 0}
+  public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1,id_order: -1},productlist:"",user:{id:0,username:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}, total: 0}
   public products: Product[] = [];
   constructor(
     private _router: Router,
