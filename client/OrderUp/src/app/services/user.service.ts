@@ -15,10 +15,16 @@ export class UserService {
     }
 
     getUser():Observable<any> {
-        return this._http.get(this.url+'/user')
+        let headers = new HttpHeaders().set('Content-Type','application/json');
+        return this._http.get(this.url+'/user',{headers: headers})
     }
 
     addUser(user: User):Observable<any> {
         return this._http.post(this.url+"/register",user);
+    }
+
+    getUsers():Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type','application/json');
+        return this._http.get(this.url+"/users",{headers: headers})
     }
 }

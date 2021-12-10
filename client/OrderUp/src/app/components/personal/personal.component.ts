@@ -13,7 +13,15 @@ export class PersonalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this._UserService.getUsers().subscribe(
+      response => {
+        console.log(response)
+      },
+      err => {
+        console.log(err)
+      }
+    )
   }
+
 
 }
