@@ -15,16 +15,16 @@ import { AuthGuard } from "./auth.guard";
 const appRoutes: Routes = [
     {   path: '', component: CardComponent},
     {   path: 'Card', component: CardComponent },
-    {   path: 'Card/:id', component: CardComponent},
+    {   path: 'Card/:id', component: CardComponent, canActivate: [AuthGuard]},
     {   path: 'Login', component: LoginComponent},
-    {   path: 'Order/:id', component: OrderComponent},
-    {   path: 'Order', component: OrderComponent},
-    {   path: 'Orders', component: OrdersComponent},
-    {   path: 'Register', component: RegisterComponent},
-    {   path: 'Stock', component: StockComponent},
-    {   path: 'Tables', component: TablesComponent},
-    {   path: 'Administrador', component: AdministradorComponent},
-    {   path: 'Personal', component:PersonalComponent},
+    {   path: 'Order/:id', component: OrderComponent, canActivate: [AuthGuard]},
+    {   path: 'Order', component: OrderComponent, canActivate: [AuthGuard]},
+    {   path: 'Orders', component: OrdersComponent, canActivate: [AuthGuard]},
+    {   path: 'Register', component: RegisterComponent, canActivate: [AuthGuard]},
+    {   path: 'Stock', component: StockComponent, canActivate: [AuthGuard]},
+    {   path: 'Tables', component: TablesComponent, canActivate: [AuthGuard]},
+    {   path: 'Administrador', component: AdministradorComponent, canActivate: [AuthGuard]},
+    {   path: 'Personal', component:PersonalComponent, canActivate: [AuthGuard]},
     
 ];
 

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Global } from "./global";
+import { User } from "../models/User";
 
 @Injectable()
 export class UserService {
@@ -13,9 +14,11 @@ export class UserService {
         this.url = Global.url;
     }
 
-    authorization(user:any):Observable<any> {
-        let headers = new HttpHeaders().set('Content-Type','application/json');
-        return this._http.post(this.url+"/authenticate",user, {headers:headers})
+    getUser():Observable<any> {
+        return this._http.get(this.url+'/user')
     }
-   
+
+    addUser(user: User):Observable<any> {
+        return this._http.post(this.url+"/register",user);
+    }
 }

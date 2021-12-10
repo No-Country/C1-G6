@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   checkUser(form:any){
     if( this.username.username != "" && this.username.password != ""){
-      this._userService.authorization(this.username).subscribe(
+      this._authService.singUp(this.username).subscribe(
         response => {
           console.log(response)
         },

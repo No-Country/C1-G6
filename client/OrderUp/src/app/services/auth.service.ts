@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Global } from "./global";
 import { Observable } from "rxjs";
 import { Router } from "@angular/router";
@@ -15,7 +15,8 @@ export class authService {
     ){ }
 
     singUp(user:any):Observable<any> {
-        return this._http.post(this.url+'user/login',user);
+        let headers = new HttpHeaders().set('Content-Type','application/json');
+        return this._http.post(this.url+'/authenticate',user,{headers:headers});
     }
 
     loggedIn():boolean {

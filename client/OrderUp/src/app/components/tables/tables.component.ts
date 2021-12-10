@@ -5,29 +5,42 @@ import { Product } from 'src/app/models/Product';
 import { Table } from 'src/app/models/Table';
 import { Global } from 'src/app/services/global';
 import { ProductService } from 'src/app/services/produtc.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'tables',
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.css'],
-  providers: [ProductService]
+  providers: [ProductService,UserService]
 })
 export class TablesComponent implements OnInit {
   public orders: Order[] = [];
-  public tables: Table[] = [
-    {id: 1,tableNumber: 1, id_order: -1},
-    {id: 2,tableNumber: 2, id_order: -1},
-    {id: 3,tableNumber: 3, id_order: -1},
-    {id: 4,tableNumber: 4, id_order: -1}
-  ];
+  public tables: Table[] = [];
+  public rol: number = 0;
+
   constructor(
     private _ProductService : ProductService,
-    private _router: Router
+    private _router: Router,
+    private _UserService: UserService
   ) { }
 
   ngOnInit(): void {
     sessionStorage.setItem('order',"");
     this.getOrders();
+    this.getRol();
+  }
+
+  getTables() {
+    this._ProductService.getTables().subscribe(
+      response => {
+        this.tables = response;
+      },
+      err =>  {
+        console.log("-----------------------");
+        console.log(err);
+        console.log("-----------------------");
+      }
+    )
   }
 
   getOrders() {
@@ -94,14 +107,44 @@ export class TablesComponent implements OnInit {
   }
 
   addTable(){
-    alert('Mesa agregada')
-    // Pedir todas las mesas
-    // buscar la mesa con el numero mas alto
-    // sumarle uno
-    // crear nueva mesa con x numero
+    var number = 0;
+    for (let i = 0; i < this.tables.length; i++) {
+      if( this.tables[i].tableNumber > number) {
+        number = this.tables[i].tableNumber;
+      }
+    }
+    number++;
 
-    // volver a pedir todas las mesas
-    // y asignarlas al arreglo
+    var table: Table = {
+      id: number,
+      tableNumber: number,
+      id_order: 0
+    }
+    this._ProductService.addTable(table).subscribe(
+      response => {
+        alert("Mesa agregada con exito")
+      },  
+      err => {
+        console.log("-----------------------");
+        console.log(err);
+        console.log("-----------------------");
+      }
+    ) 
+    this.getTables();
+  }
+
+  getRol() {
+    this._UserService.getUser().subscribe(
+      response => {
+        console.log(response);
+        // this.rol = response.role.id
+      },
+      err => {
+        console.log("-----------------------");
+        console.log(err);
+        console.log("-----------------------");
+      }
+    )
   }
 
 }

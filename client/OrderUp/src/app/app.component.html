@@ -10,10 +10,10 @@
             <a class="nav-link" [routerLink]="['/Card']">Menu</a>
           </li>
           <li class="nav-item" data-toggle="collapse"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <a class="nav-link" [routerLink]="['/Tables']" *ngIf="true">Mesas</a>
+            <a class="nav-link" [routerLink]="['/Tables']" *ngIf="rol == 1 || rol == 2 || rol == 3">Mesas</a>
           </li>
           <li class="nav-item" data-toggle="collapse"  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <a class="nav-link" [routerLink]="['/Administrador']" *ngIf="true">Administrador</a>
+            <a class="nav-link" [routerLink]="['/Administrador']" *ngIf="rol == 2">Administrador</a>
           </li>
 
         </ul>

@@ -6,12 +6,13 @@ import { Product } from 'src/app/models/Product';
 import { Category } from 'src/app/models/Category';
 import { Order } from 'src/app/models/Order';
 import { Global } from 'src/app/services/global';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
-  providers: [ProductService]
+  providers: [ProductService,UserService]
 })
 export class CardComponent implements OnInit {
   public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1, id_order: -1},productlist:"",user:{id:0,username:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}, total:0}
@@ -19,10 +20,13 @@ export class CardComponent implements OnInit {
   public Products: Product[] = []
   public ProductsOrder: Product[] = []
   public idExist: boolean = false;
+  public rol: number = 0;
+
   constructor(
     private _router: Router,
     private _ProductService: ProductService,
-    private _route: ActivatedRoute
+    private _route: ActivatedRoute,
+    private _UserService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +37,7 @@ export class CardComponent implements OnInit {
       if(id != undefined){
         this.getOrder(id);
         this.idExist = true;
+        this.getRol();
       }
     });
   }
@@ -162,4 +167,17 @@ export class CardComponent implements OnInit {
     request.send(formData);
   }
 
+  getRol() {
+    this._UserService.getUser().subscribe(
+      response => {
+        console.log(response);
+        // this.rol = response.role.id
+      },
+      err => {
+        console.log("-----------------------");
+        console.log(err);
+        console.log("-----------------------");
+      }
+    )
+  }
 }
