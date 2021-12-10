@@ -10,6 +10,7 @@ import { TablesComponent } from "./components/tables/tables.component";
 import { AdministradorComponent } from "./components/administrador/administrador.component";
 import { PersonalComponent } from "./components/personal/personal.component";
 import { OrdersComponent } from "./components/orders/orders.component";
+import { AddFoodComponent } from "./components/add-food/add-food.component";
 import { AuthGuard } from "./auth.guard";
 
 const appRoutes: Routes = [
@@ -23,8 +24,9 @@ const appRoutes: Routes = [
     {   path: 'Register', component: RegisterComponent, canActivate: [AuthGuard]},
     {   path: 'Stock', component: StockComponent, canActivate: [AuthGuard]},
     {   path: 'Tables', component: TablesComponent, canActivate: [AuthGuard]},
-    {   path: 'Administrador', component: AdministradorComponent, canActivate: [AuthGuard]},
+    {   path: 'Administrador', component: AdministradorComponent},
     {   path: 'Personal', component:PersonalComponent, canActivate: [AuthGuard]},
+    {   path: 'AddFood', component:AddFoodComponent, canActivate: [AuthGuard]},
     
 ];
 

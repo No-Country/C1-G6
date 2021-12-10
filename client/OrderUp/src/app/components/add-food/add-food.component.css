@@ -52,8 +52,24 @@
     transition: all .4s;
     height: 40px;
 }
+.container .box .description {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(to right, #ff416c, #ff4b2b) !important;
+}
+.container span {
+    width: 100%;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    background: linear-gradient(to right, #ff416c, #ff4b2b) !important;
+}
 .container .box input:focus::placeholder{
     color: white;
+    
+
+
 }
 .container .box div::before{
     content: "";

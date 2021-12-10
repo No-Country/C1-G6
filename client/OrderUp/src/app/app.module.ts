@@ -16,6 +16,7 @@ import { AdministradorComponent } from './components/administrador/administrador
 import { PersonalComponent } from './components/personal/personal.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { AuthGuard } from './auth.guard';
+import { AddFoodComponent } from './components/add-food/add-food.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AuthGuard } from './auth.guard';
     OrdersComponent,
     RegisterComponent,
     AdministradorComponent,
-    PersonalComponent
+    PersonalComponent,
+    AddFoodComponent,
   ],
   imports: [
     BrowserModule,
