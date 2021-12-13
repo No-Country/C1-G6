@@ -12,10 +12,9 @@ import io.orderup.services.UserService;
 import io.orderup.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.*;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
@@ -79,18 +78,17 @@ public class AuthController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/authenticate")
     public String createAuthenticationToken(HttpServletRequest httpServletRequest,
-            @RequestBody AuthenticationRequest authenticationRequest) throws Exception {
+             @RequestBody AuthenticationRequest authenticationRequest) throws Exception {
         String json = "";
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(),
-                            authenticationRequest.getPassword())
+                    new UsernamePasswordAuthenticationToken(authenticationRequest.getEmail(), authenticationRequest.getPassword())
             );
-        } catch (BadCredentialsException e) {
+        } catch (Exception e) {
             throw new Exception("Incorrect username or password", e);
         }
 
-        final User userDetails = ouUserDetailsService
+        /*final User userDetails = ouUserDetailsService
                 .loadUserByUsername(authenticationRequest.getEmail());
 
         final String jwt = jwtUtil.generateToken(userDetails);
@@ -111,8 +109,9 @@ public class AuthController {
 
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-        }
+        }*/
         return json;
+        //return "pusiste estos datos: \n email: "  + authenticationRequest.getEmail() + "\n password: " + authenticationRequest.getPassword();
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/register")
