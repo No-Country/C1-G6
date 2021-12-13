@@ -11,7 +11,7 @@
             <p>Cateogria</p>
             <select name="category" #category [(ngModel)]="product.category.id">
                 <option value="0">-------</option>
-                <option *ngFor="let category of Categorys" value="category.id">{{category.name}}</option>
+                <option *ngFor="let category of Categorys" value="{{category.id}}">{{category.name}}</option>
             </select>
         </div>
         <div class="box">

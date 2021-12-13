@@ -25,7 +25,7 @@ export class AddFoodComponent implements OnInit {
 
   addFood(form: any){
     var formData = new FormData();
-
+    console.log(this.product.category.id)
     formData.append("name", this.product.name);
     formData.append("description", this.product.description);
     formData.append("price", this.product.price.toString());   
