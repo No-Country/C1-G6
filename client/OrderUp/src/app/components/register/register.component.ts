@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   providers: [UserService]
 })
 export class RegisterComponent implements OnInit {
-  public newUser: User = {id: 0,username: "",surname: "",password: "",email:"",phone:0,role_id:{id: 0, name:""}}
+  public newUser: User = {id: 0,username: "",surname: "",password: "",email:"",phone:0,role:{id: 0, name:""}}
   constructor(
     private _userService: UserService
   ) { }
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(form:any) {
-    if ( this.newUser.username != "" && this.newUser.surname !="" && this.newUser.password !="" && this.newUser.email !="" && this.newUser.phone != 0 && this.newUser.role_id.id != 0) {
+    if ( this.newUser.username != "" && this.newUser.surname !="" && this.newUser.password !="" && this.newUser.email !="" && this.newUser.phone != 0 && this.newUser.role.id != 0) {
       // var formData = new FormData();
 
       // formData.append("name", this.newUser.username)

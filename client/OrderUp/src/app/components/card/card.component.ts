@@ -15,12 +15,12 @@ import { UserService } from 'src/app/services/user.service';
   providers: [ProductService,UserService]
 })
 export class CardComponent implements OnInit {
-  public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1, id_order: -1},productlist:"",user:{id:0,username:"",surname:"",password:"",email:"",phone:0,role_id:{id:0,name:""}}, total:0}
+  public order: Order = {comments:"",id:0,table:{id:0,tableNumber:-1, id_order: -1},productlist:"",user:{id:0,username:"",surname:"",password:"",email:"",phone:0,role:{id:0,name:""}}, total:0}
   public Categorys: Category[] = []
   public Products: Product[] = []
   public ProductsOrder: Product[] = []
   public idExist: boolean = false;
-  public rol: number = 0;
+  public rol: number = 1;
 
   constructor(
     private _router: Router,
@@ -37,7 +37,6 @@ export class CardComponent implements OnInit {
       if(id != undefined){
         this.getOrder(id);
         this.idExist = true;
-        this.getRol();
       }
     });
   }

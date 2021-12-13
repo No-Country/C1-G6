@@ -15,8 +15,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TablesComponent implements OnInit {
   public orders: Order[] = [];
-  public tables: Table[] = [];
-  public rol: number = 0;
+  public tables: Table[] = [ {id:1, tableNumber:1, id_order:-1},{id:2, tableNumber:2, id_order:-1},{id:3, tableNumber:3, id_order:-1},{id:4, tableNumber:4, id_order:-1}];
+  public rol: number = 2;
 
   constructor(
     private _ProductService : ProductService,
@@ -27,7 +27,6 @@ export class TablesComponent implements OnInit {
   ngOnInit(): void {
     sessionStorage.setItem('order',"");
     this.getOrders();
-    this.getRol();
   }
 
   getTables() {
@@ -49,9 +48,13 @@ export class TablesComponent implements OnInit {
         this.orders = response;
         for (let i = 0; i < this.tables.length; i++) {
           for (let e = 0; e < this.orders.length; e++) {
-            if(this.tables[i].tableNumber == this.orders[e].table.tableNumber){
-              this.tables[i].id_order = this.orders[e].id;
-              break
+            if(this.orders[e].table != null){
+              if(this.tables[i].tableNumber == this.orders[e].table.tableNumber){
+                this.tables[i].id_order = this.orders[e].id;
+                break
+              }else {
+                this.tables[i].id_order = -1;
+              }
             }
           }
         }
@@ -83,8 +86,10 @@ export class TablesComponent implements OnInit {
           response => {
             var auxOrder = response;
             for (let i = 0; i < auxOrder.length; i++) {
-              if(auxOrder[i].table.tableNumber == tableNumber){
-                this._router.navigate(['/Order',auxOrder[i].id]);
+              if(auxOrder[i].table != null){
+                if(auxOrder[i].table.tableNumber == tableNumber){
+                  this._router.navigate(['/Order',auxOrder[i].id]);
+                }
               }
             }
 
@@ -103,34 +108,42 @@ export class TablesComponent implements OnInit {
   }
 
   deleteTable(id_table: number){
-    alert('Mesa '+id_table+' eliminada')
+    alert('Mesa '+id_table+' eliminada');
+    var idAux = this.tables.findIndex(table => table.id == id_table);
+    if(idAux){
+      this.tables.splice(idAux,1);
+    }
   }
 
   addTable(){
-    var number = 0;
-    for (let i = 0; i < this.tables.length; i++) {
-      if( this.tables[i].tableNumber > number) {
-        number = this.tables[i].tableNumber;
-      }
-    }
-    number++;
+    var numberAux = this.tables.length;
+    var number = ++numberAux;
+    var table: Table = {id:number, tableNumber:number, id_order:-1}
+    this.tables.push(table);
+    // var number = 0;
+    // for (let i = 0; i < this.tables.length; i++) {
+    //   if( this.tables[i].tableNumber > number) {
+    //     number = this.tables[i].tableNumber;
+    //   }
+    // }
+    // number++;
 
-    var table: Table = {
-      id: number,
-      tableNumber: number,
-      id_order: 0
-    }
-    this._ProductService.addTable(table).subscribe(
-      response => {
-        alert("Mesa agregada con exito")
-      },  
-      err => {
-        console.log("-----------------------");
-        console.log(err);
-        console.log("-----------------------");
-      }
-    ) 
-    this.getTables();
+    // var table: Table = {
+    //   id: number,
+    //   tableNumber: number,
+    //   id_order: 0
+    // }
+    // this._ProductService.addTable(table).subscribe(
+    //   response => {
+    //     alert("Mesa agregada con exito")
+    //   },  
+    //   err => {
+    //     console.log("-----------------------");
+    //     console.log(err);
+    //     console.log("-----------------------");
+    //   }
+    // ) 
+    // this.getTables();
   }
 
   getRol() {

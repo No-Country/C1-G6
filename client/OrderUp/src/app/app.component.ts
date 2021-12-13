@@ -12,7 +12,7 @@ import { UserService } from './services/user.service';
 export class AppComponent {
   title = 'OrderUp';
   public access: boolean = false;
-  public rol: number = 0;
+  public rol: number = 2;
 
   constructor(
     private _authService: authService,
@@ -20,7 +20,6 @@ export class AppComponent {
     ){}
   
   ngOnInit(): void {
-    this.getRol();
   }
 
   ngDoCheck() {
@@ -38,7 +37,6 @@ export class AppComponent {
   getRol() {
     this._UserService.getUser().subscribe(
       response => {
-        console.log(response);
         // this.rol = response.role.id
       },
       err => {
