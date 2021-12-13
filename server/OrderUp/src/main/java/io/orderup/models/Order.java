@@ -16,9 +16,8 @@ public class Order implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne()
-    @JoinColumn(name = "products")
-    private Product products;
+
+    private String productlist;
 
     @ManyToOne()
     @JoinColumn(name = "table_id")
@@ -29,4 +28,6 @@ public class Order implements Serializable {
     @ManyToOne()
     @JoinColumn(name = "user_id")
     private User user;
+
+    private int total;
 }

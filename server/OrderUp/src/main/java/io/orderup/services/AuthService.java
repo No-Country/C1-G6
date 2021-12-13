@@ -41,7 +41,7 @@ public class AuthService {
         return  "The user \n" + json + "\n has been successfully registered";
     }
 
-    public void changeData(String id, User user){
+    public void changeData(long id, User user){
         userRepository.save(user);
     }
 

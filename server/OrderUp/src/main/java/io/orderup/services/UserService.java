@@ -31,10 +31,6 @@ public class UserService {
         }
     }
 
-    @Transactional
-    public User findById(long id) {
-        return userRepository.findById(id);
-    }
     public void save(User user) {
         userRepository.save(user);
     }

@@ -22,7 +22,7 @@ public class User extends DateAudit implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private String id;
+    private long id;
     private String username;
     private String surname;
     private String password;
