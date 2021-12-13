@@ -129,13 +129,39 @@ public class AuthController {
                 word[j] = (char)('a' + random.nextInt(26));
             }
         randomString = new String(word);
-        System.out.println(randomString);
         user.setPassword(user.getPassword() + randomString);
         return authService.register(user);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/change-data/{id}")
-    public void changeData(@PathVariable String id, @RequestBody User user) {
+    @RequestMapping(method = RequestMethod.PUT, value = "/users/{id}")
+    public void changeData(@PathVariable long id, @RequestBody User user) {
+        User oldUser = userService.getUser(id);
+        if (user.getUsername() == null){
+            user.setUsername(oldUser.getUsername());
+        }
+        if (user.getEmail() == null){
+            user.setEmail(oldUser.getEmail());
+        }
+        if (user.getPassword() == null){
+            user.setPassword(oldUser.getPassword());
+        }
+        else {
+            String randomString;
+            Random random = new Random();
+            char[] word = new char[ThreadLocalRandom.current().nextInt(4, 8)];
+            for(int j = 0; j < word.length; j++)
+            {
+                word[j] = (char)('a' + random.nextInt(26));
+            }
+            randomString = new String(word);
+            user.setPassword(user.getPassword() + randomString);
+        }
+        if (user.getPhone() == 0){
+            user.setPhone(oldUser.getPhone());
+        }
+        if (user.getSurname() == null){
+            user.setSurname(oldUser.getSurname());
+        }
         authService.changeData(id, user);
     }
 }

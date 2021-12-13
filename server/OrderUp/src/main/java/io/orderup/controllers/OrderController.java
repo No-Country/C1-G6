@@ -35,6 +35,22 @@ public class OrderController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/orders/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public void updateOrder(@PathVariable long id, @ModelAttribute Order order) throws IOException {
+        Order oldOrder = getOrder(id).get();
+        if (order.getUser() == null){
+            order.setUser(oldOrder.getUser());
+        }
+        if (order.getTable() == null){
+            order.setTable(oldOrder.getTable());
+        }
+        if (order.getTotal() == 0){
+            order.setTotal(oldOrder.getTotal());
+        }
+        if (order.getComments() == null){
+            order.setComments(oldOrder.getComments());
+        }
+        if (order.getProductlist() == null){
+            order.setProductlist(oldOrder.getProductlist());
+        }
         orderservice.updateOrder(id, order);
     }
 
