@@ -2,6 +2,9 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Global } from "./global";
+import { Product } from "../models/Product";
+import { Order } from "../models/Order";
+import { Table } from "../models/Table";
 
 @Injectable()
 export class ProductService {
@@ -28,8 +31,10 @@ export class ProductService {
     getOrder(id:any):Observable<any> {
         return this._http.get(this.url+"/orders/"+id);
     }
-    PutOrder(product:any,id:any):Observable<any> {
-        var params = JSON.stringify(product);
-        return this._http.put(this.url+"/orders/"+id,params);
+    getTables():Observable<any> {
+        return this._http.get(this.url+"/tables");
+    }
+    addTable(table: Table):Observable<any> {
+        return this._http.post(this.url+"/saveTable",table)
     }
 }

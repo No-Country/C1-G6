@@ -4,13 +4,11 @@
     </div>
     <div class="row align-items-center">
         <div *ngFor= "let table of tables" class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-            <button class="close">X</button>
-            <button class="btn-block btn-primary btn-lg" type="button">Mesa {{table}}</button>
+            <button class="close" (click)="deleteTable(table.id)">X</button>
+            <a class="btn-block btn-primary btn-lg text-center" (click)="goOrder(table.id_order, table.id)" >Mesa {{table.tableNumber}}</a>   
         </div> 
     </div>
 </div>
 <div class="container-fluid">
-
-    <button class="Btn col-lg col-md">Agregar Mesa</button>
+    <button class="Btn col-lg col-md" *ngIf="rol == 2" (click)="addTable()">Agregar Mesa</button>
 </div>
-

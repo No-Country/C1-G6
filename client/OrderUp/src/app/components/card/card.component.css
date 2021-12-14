@@ -33,6 +33,13 @@ a {
   list-style: none;
 }
 
+.container #category-list #comments textarea {
+  width: 100%;
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
 .container #category-list span {
   min-width: 70px;
 }

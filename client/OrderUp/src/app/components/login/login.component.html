@@ -1,16 +1,20 @@
 <div class="container mt-4">
-    <p class="heading">Log In</p>
-    <div class="box">
-        <p>Usuario</p>
-        <div>
-            <input type="text" name="" id="" placeholder="Usuario">
+    <form id="formLogin" #formLogin="ngForm" (ngSubmit)="checkUser(formLogin)">
+        <p class="heading">Log In</p>
+        <div class="box">
+            <p>Usuario</p>
+            <div>
+                <input type="text" name="user" #user="ngModel" [(ngModel)]="username.username" placeholder="Usuario">
+            </div>
         </div>
-    </div>
-    <div class="box">
-        <p>Contraseña</p>
-        <div>
-            <input type="password" name="" id="" placeholder="Contraseña">
+        <div class="box">
+            <p>Contraseña</p>
+            <div>
+                <input type="password" name="pass" #pass="ngModel" [(ngModel)]="username.password" placeholder="Contraseña">
+            </div>
         </div>
-    </div>
-    <button class="loginBtn btn-danger">Loguear</button>
+        <button class="loginBtn btn-danger">Iniciar Sesion</button>
+        <span class="errorC" *ngIf="errorC">Credenciales no validas</span>
+    </form>
 </div>
+

@@ -10,12 +10,16 @@ import { StockComponent } from "./components/stock/stock.component";
 import { TablesComponent } from "./components/tables/tables.component";
 import { AdministradorComponent } from "./components/administrador/administrador.component";
 import { PersonalComponent } from "./components/personal/personal.component";
-
+import { OrdersComponent } from "./components/orders/orders.component";
+import { AddFoodComponent } from "./components/add-food/add-food.component";
+import { AuthGuard } from "./auth.guard";
 
 const appRoutes: Routes = [
     {   path: '', component: CardComponent},
     {   path: 'Card', component: CardComponent },
-    {   path: 'Login', component: LoginComponent },
+    {   path: 'Card/:id', component: CardComponent},
+    {   path: 'Login', component: LoginComponent},
+    {   path: 'Order/:id', component: OrderComponent},
     {   path: 'Order', component: OrderComponent},
     {   path: 'Orders', component: OrdersComponent},
     {   path: 'Register', component: RegisterComponent},
@@ -23,6 +27,7 @@ const appRoutes: Routes = [
     {   path: 'Tables', component: TablesComponent},
     {   path: 'Administrador', component: AdministradorComponent},
     {   path: 'Personal', component:PersonalComponent},
+    {   path: 'AddFood', component:AddFoodComponent},
     
 ];
 

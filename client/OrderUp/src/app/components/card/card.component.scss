@@ -25,7 +25,14 @@ a {
     }
     #category-list {
         list-style: none;
-        
+        #comments {
+            textarea {
+                width: 100%;
+                background-color: transparent;
+                color: white;
+                border: none;
+            }
+        }
         span {
             min-width: 70px;
         }

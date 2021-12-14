@@ -9,25 +9,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Marcos</td>
-        <td>Kruppa</td>
-        <td>Cocinero</td>
-        <td><a class="Btn btn-danger">X</a></td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Tomas</td>
-        <td>Reinhardt</td>
-        <td>Administrador</td>
-        <td><a class="Btn btn-danger">X</a></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Nicolas</td>
-        <td>Rosario</td>
-        <td>Mozo</td>
+      <tr *ngFor="let personal of Personal; let i=index">
+        <th scope="row">{{i}}</th>
+        <td>{{personal.username}}</td>
+        <td>{{personal.surname}}</td>
+        <td>{{personal.role.name}}</td>
         <td><a class="Btn btn-danger">X</a></td>
       </tr>
     </tbody>
