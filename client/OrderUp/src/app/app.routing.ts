@@ -10,7 +10,6 @@ import { StockComponent } from "./components/stock/stock.component";
 import { TablesComponent } from "./components/tables/tables.component";
 import { AdministradorComponent } from "./components/administrador/administrador.component";
 import { PersonalComponent } from "./components/personal/personal.component";
-import { OrdersComponent } from "./components/orders/orders.component";
 import { AddFoodComponent } from "./components/add-food/add-food.component";
 import { AuthGuard } from "./auth.guard";
 
