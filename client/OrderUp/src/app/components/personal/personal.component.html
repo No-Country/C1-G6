@@ -9,8 +9,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let personal of Personal">
-        <th scope="row">1</th>
+      <tr *ngFor="let personal of Personal; let i=index">
+        <th scope="row">{{i}}</th>
         <td>{{personal.username}}</td>
         <td>{{personal.surname}}</td>
         <td>{{personal.role.name}}</td>

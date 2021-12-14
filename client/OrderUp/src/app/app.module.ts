@@ -9,6 +9,7 @@ import { StockComponent } from './components/stock/stock.component';
 import { LoginComponent } from './components/login/login.component';
 import { CardComponent } from './components/card/card.component';
 import { TablesComponent } from './components/tables/tables.component';
+import { OrdersComponent } from './components/orders/orders.component';
 import { OrderComponent } from './components/order/order.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { RegisterComponent } from './components/register/register.component';

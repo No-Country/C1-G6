@@ -23,6 +23,7 @@ h3 {
     text-align: center;
 
 }
+
 .close{
     right: 18px;
     bottom: 20px;
@@ -46,8 +47,32 @@ h3 {
 
 
 }
+
+.close{
+    right: 18px;
+    bottom: 18px;
+    position: absolute;
+    width: 35px;
+    height: 40px;
+    border-radius: 0.3rem;
+}
+
+.Btn{
+    width: 60%!important;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+    margin: 0px 25%;
+    transform: translate(-1%);
+    cursor: pointer;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    transition: all .4s;
+    padding: 5px 20px;
+    
+        
+}
+
 .Btn:hover{
     transform: translate(-1%, 5%);
     box-shadow: 0 0 10px #ff416d65;
-
 } 
