@@ -1,5 +1,4 @@
 io\orderup\controllers\ProductController.class
-io\orderup\models\OrderList.class
 io\orderup\controllers\OrderController.class
 io\orderup\models\User.class
 io\orderup\services\UserService.class
@@ -32,5 +31,4 @@ io\orderup\services\CategoryService.class
 io\orderup\controllers\CategoryController.class
 io\orderup\repositories\TableRepository.class
 io\orderup\controllers\AuthController.class
-io\orderup\models\ProductList.class
 io\orderup\config\SecurityConfig.class
