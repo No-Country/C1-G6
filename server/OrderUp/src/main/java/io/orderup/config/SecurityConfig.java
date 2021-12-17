@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/*").allowedOrigins("http://localhost:4200", "http://localhost:3000");
+                registry.addMapping("/api/*").allowedOrigins("https://tomasreinhardt.github.io/OrderUp");
             }
         };
     }
