@@ -81,6 +81,7 @@ export class TablesComponent implements OnInit {
       var request = new XMLHttpRequest();
       request.open("POST", Global.url+"/orders");
       request.send(formData);
+      
       setTimeout(() => {
         this._ProductService.getOrders().subscribe(
           response => {
