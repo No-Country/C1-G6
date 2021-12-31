@@ -73,7 +73,7 @@ export class TablesComponent implements OnInit {
 
       var table = tableNumber.toString();
 
-      formData.append("productlist", "");
+      formData.append("product-list", "");
       formData.append("table", table);
       formData.append("comments", "Sin comentarios");
       formData.append("user", '2');
